@@ -1,0 +1,17 @@
+name: Build
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    # Uses the Win32 API, so compile on Windows.
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: g++ main.cpp -o secure_scanner
